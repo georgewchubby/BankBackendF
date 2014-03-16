@@ -19,4 +19,12 @@ create table Account (
 accountNumber varchar(80),
 balance int,
 interest decimal
+owner int not null references Persons(cpr)
+);
+
+create table Transfer (
+amount decimal,
+transferDate date,
+sourceAccount varchar(80) not null references Account(accountNumber),
+targetAccount varchar(80) not null references Account(accountNumber)
 );
