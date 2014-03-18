@@ -1,6 +1,11 @@
+drop table transfer;
+drop table account;
+drop table persons;
+drop table postal;
+
 create table Postal (
 postalCode int primary key,
-postalDistrict varchar(80)
+postalDistrict varchar(40)
 );
 
 create table Persons (
@@ -9,16 +14,16 @@ title varchar(80),
 firstName varchar(80) not null,
 lastName varchar(80) not null,
 street varchar(80),
-phone varchar(80), 
+postalCode int not null references Postal(postalCode),
+phone varchar(8), 
 email varchar(80),
-password varchar(80),
-postalCode int not null references Postal(postalCode)
+password varchar(255)
 );
 
 create table Account (
-accountNumber varchar(80),
+accountNumber varchar(80) primary key,
 balance int,
-interest decimal
+interest decimal,
 owner int not null references Persons(cpr)
 );
 

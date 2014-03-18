@@ -25,7 +25,7 @@ public class BankManagerBean implements BankManager {
 
     @Override
     public String sayHello(String name) {
-        return "Hello " + name + " from bank manager bean";
+        return "hello " + name + " from bank manager bean";
     }
 
     @Override
