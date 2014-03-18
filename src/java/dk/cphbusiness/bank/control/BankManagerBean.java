@@ -12,9 +12,14 @@ import dk.cphbusiness.bank.contract.eto.InsufficientFundsException;
 import dk.cphbusiness.bank.contract.eto.NoSuchAccountException;
 import dk.cphbusiness.bank.contract.eto.NoSuchCustomerException;
 import dk.cphbusiness.bank.contract.eto.TransferNotAcceptedException;
+import dk.cphbusiness.bank.model.Person;
 import java.math.BigDecimal;
 import java.util.Collection;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import static dk.cphbusiness.bank.control.Assembler.*;
 
 /**
  *
@@ -23,6 +28,9 @@ import javax.ejb.Stateless;
 @Stateless
 public class BankManagerBean implements BankManager {
 
+    @PersistenceContext(unitName = "BankBackendFPU")
+    private EntityManager em;
+
     @Override
     public String sayHello(String name) {
         return "hello " + name + " from bank manager bean";
@@ -30,7 +38,9 @@ public class BankManagerBean implements BankManager {
 
     @Override
     public Collection<CustomerSummary> listCustomers() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Query query = em.createNamedQuery("Person.findAll");
+        Collection<Person> persons = query.getResultList();
+        return createCustomerSummaries(persons);
     }
 
     @Override

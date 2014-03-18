@@ -22,3 +22,15 @@ insert into Persons values ('2310568877','Hr','Saleh','Salehsen','SamarmargeVej 
 insert into Persons values ('2109401212','Fr','Sille','Sillesen','SildeVejen 85',7900,'65231818','Sille@email.dk',null);
 insert into Persons values ('1205351231','Hr','David','Davidsen','DanmarkVej 99',2100,'85182819','David@email.dk',null);
 insert into Persons values ('2412453313','Fr','Janne','Jannesen','JakkeVej 78',4500,'12019320','Janne@email.dk',null);
+
+insert into accounts values ('4711-1001', 1000, 0.08, '121256-0555');
+insert into accounts values ('4711-1002', 1000, 0.025, '121256-0555');
+insert into accounts values ('4711-1003', 1000, 0.035, '121256-0555');
+insert into accounts values ('4711-1004', 1000, 0.026, '121256-0555');
+insert into accounts values ('4711-1005', 1000, 0.1, '111190-0444');
+insert into accounts values ('4711-1006', 1000, 0.01, '111190-0444');
+insert into accounts values ('4711-1007', 1000, 0.25, '010256-0777');
+
+insert into transfers values (1, 10000, '2014-01-01', '4711-1001', '4711-1007');
+insert into transfers values (2, 12345, '2014-01-01', '4711-1005', '4711-1007');
+insert into transfers values (3, 5000, '2014-01-01', '4711-1001', '4711-1005');
