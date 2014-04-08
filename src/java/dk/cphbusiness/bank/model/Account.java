@@ -1,6 +1,7 @@
 package dk.cphbusiness.bank.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -38,10 +39,10 @@ public class Account implements Serializable {
     private String accountnumber;
     
     @Column(name = "BALANCE")
-    private Integer balance;
+    private BigDecimal balance;
     
     @Column(name = "INTEREST")
-    private Integer interest;
+    private BigDecimal interest;
     
     @JoinColumn(name = "OWNER", referencedColumnName = "CPR")
     @ManyToOne(optional = false)
@@ -68,19 +69,19 @@ public class Account implements Serializable {
         this.accountnumber = accountnumber;
     }
 
-    public Integer getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(Integer balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 
-    public Integer getInterest() {
+    public BigDecimal getInterest() {
         return interest;
     }
 
-    public void setInterest(Integer interest) {
+    public void setInterest(BigDecimal interest) {
         this.interest = interest;
     }
 

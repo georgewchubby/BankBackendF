@@ -20,6 +20,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import static dk.cphbusiness.bank.control.Assembler.*;
+import dk.cphbusiness.bank.model.Account;
 
 /**
  *
@@ -45,12 +46,16 @@ public class BankManagerBean implements BankManager {
 
     @Override
     public Collection<AccountSummary> listAccounts() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Query query = em.createNamedQuery("Account.findAll");
+        Collection<Account> accounts = query.getResultList();
+        return createAccountSummaries(accounts);
     }
 
     @Override
     public Collection<AccountSummary> listCustomerAccounts(CustomerIdentifier customer) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Person person = em.find(Person.class, customer.getCpr());
+        Collection<Account> accounts = person.getAccountCollection();
+        return createAccountSummaries(accounts);
     }
 
     @Override

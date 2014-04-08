@@ -17,12 +17,13 @@ street varchar(80),
 postalCode int not null references Postals(postalCode),
 phone varchar(8), 
 email varchar(80),
-password varchar(255)
+password varchar(255),
+dtype varchar(30) not null
 );
 
 create table Accounts (
 accountNumber varchar(10) primary key,
-balance int,
+balance decimal,
 interest decimal,
 owner varchar(11) not null references Persons(cpr)
 );

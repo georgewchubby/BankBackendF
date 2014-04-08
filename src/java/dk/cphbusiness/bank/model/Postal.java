@@ -22,9 +22,8 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "POSTALS")
-@Inheritance(strategy = InheritanceType.JOINED)
 @NamedQueries({
-    @NamedQuery(name = "Postal.findAll", query = "SELECT p FROM Postal p")})
+   @NamedQuery(name = "Postal.findAll", query = "SELECT p FROM Postal p")})
 public class Postal implements Serializable {
     private static final long serialVersionUID = 1L;
     
@@ -38,9 +37,9 @@ public class Postal implements Serializable {
     @Column(name = "POSTALDISTRICT")
     private String postaldistrict;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "postal")
+    @OneToMany(mappedBy = "postal")
     private Collection<Person> personCollection;
-
+ //cascade = CascadeType.ALL,
     public Postal() {
     }
 
